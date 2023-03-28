@@ -21,6 +21,9 @@ img {
 .yellow-bg {
     background-color: $yellow;
 }
+.white {
+    color: white;
+}
 
 .center {
     display: block;
@@ -121,5 +124,26 @@ header {
     .landing-motto {
         min-height: 30vh;
         background-color: $pink;
+    }
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    height: 70px;
+    align-items: center;
+    padding: 40px;
+
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .row {
+        width: 100%;
+    }
+
+    ul {
+        list-style: none;
     }
 }

@@ -19,6 +19,10 @@ img {
   background-color: #FCDD9A;
 }
 
+.white {
+  color: white;
+}
+
 .center {
   display: block;
   text-align: center;
@@ -115,5 +119,32 @@ header ul li a:hover {
 #landing .landing-motto {
   min-height: 30vh;
   background-color: #F2B3D1;
+}
+
+footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 70px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 40px;
+}
+
+footer * {
+  padding: 0;
+  margin: 0;
+}
+
+footer .row {
+  width: 100%;
+}
+
+footer ul {
+  list-style: none;
 }
 /*# sourceMappingURL=styles.css.map */
