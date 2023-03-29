@@ -1,6 +1,8 @@
+@import url("https://use.typekit.net/vfe8axl.css");
 html, * {
   padding: 0;
   margin: 0;
+  font-family: "sofia-pro", sans-serif;
 }
 
 html {
@@ -23,6 +25,18 @@ img {
   color: white;
 }
 
+.pink {
+  color: #F2B3D1;
+}
+
+.green {
+  color: #CCE193;
+}
+
+.yellow {
+  color: #FCDD9A;
+}
+
 .center {
   display: block;
   text-align: center;
@@ -31,11 +45,24 @@ img {
 }
 
 .green-underline {
-  border-bottom: 5px solid #CCE193;
-  padding-bottom: 5px;
+  border-bottom: 6px solid #CCE193;
+  padding-bottom: 7px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+}
+
+img.green-underline {
+  margin-bottom: 10px;
+}
+
+.bg-music {
+  display: none;
+}
+
+.title {
+  font-weight: 600;
+  letter-spacing: 3px;
 }
 
 .home-body #home-nav,
@@ -58,6 +85,7 @@ header {
           align-items: center;
   width: 100%;
   height: 80px;
+  z-index: 100;
   letter-spacing: 1px;
   text-align: center;
   padding: 15px;
@@ -91,7 +119,7 @@ header ul li a {
   border-bottom: 2px solid transparent;
   -webkit-transition: 0.15s;
   transition: 0.15s;
-  padding: 10px 15px;
+  padding: 5px 12px;
   border-radius: 20px;
 }
 
@@ -100,8 +128,12 @@ header ul li a:hover {
   background-color: white;
 }
 
+.full-height {
+  min-height: calc(100vh - 80px);
+}
+
 .container {
-  padding: 20px;
+  padding: 25px;
 }
 
 .header-padding {
@@ -113,12 +145,16 @@ header ul li a:hover {
 }
 
 #landing .landing-img {
-  min-height: 70vh;
+  height: 70vh;
+  position: relative;
+  z-index: 1;
 }
 
 #landing .landing-motto {
   min-height: 30vh;
+  position: relative;
   background-color: #F2B3D1;
+  z-index: 1000;
 }
 
 footer {
@@ -146,5 +182,31 @@ footer .row {
 
 footer ul {
   list-style: none;
+}
+
+.image-caption {
+  position: relative;
+}
+
+.image-caption .caption {
+  background-color: rgba(242, 179, 209, 0.5);
+  position: absolute;
+  padding: 10px;
+  bottom: 15px;
+  width: 100%;
+  z-index: 3;
+  text-align: center;
+  letter-spacing: 3px;
+  font-weight: 600;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.image-caption a {
+  color: black;
+}
+
+.image-caption a:hover .caption {
+  background-color: #f2b3d1;
 }
 /*# sourceMappingURL=styles.css.map */
