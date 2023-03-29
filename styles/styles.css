@@ -56,6 +56,14 @@ img.green-underline {
   margin-bottom: 10px;
 }
 
+.yellow-underline {
+  border-bottom: 6px solid #FCDD9A;
+  padding-bottom: 7px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
 .bg-music {
   display: none;
 }
@@ -134,26 +142,38 @@ header ul li a:hover {
 
 .container {
   padding: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .header-padding {
-  padding-top: 100px;
+  padding-top: 80px;
 }
 
-#landing {
-  min-height: 100vh;
-}
-
-#landing .landing-img {
-  height: 70vh;
+#landing .landing-img, #landing .carousel-item {
+  max-height: calc(80vh - 80px);
   position: relative;
   z-index: 1;
 }
 
+#landing .landing-img img, #landing .carousel-item img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 #landing .landing-motto {
-  min-height: 30vh;
+  height: 40vw;
+  max-height: 20vh;
   position: relative;
   background-color: #F2B3D1;
+  padding: 20px;
   z-index: 1000;
 }
 
@@ -182,6 +202,18 @@ footer .row {
 
 footer ul {
   list-style: none;
+}
+
+footer a {
+  color: black;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  border-bottom: 2px solid transparent;
+}
+
+footer a:hover {
+  color: black;
+  border-bottom: 2px solid black;
 }
 
 .image-caption {
