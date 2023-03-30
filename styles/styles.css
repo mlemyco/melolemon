@@ -80,6 +80,89 @@ img.green-underline {
   background-color: white;
 }
 
+.lines-button {
+  display: block;
+  -webkit-transition: .3s;
+  transition: .3s;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  margin-left: 0;
+}
+
+.lines-button .lines {
+  margin-left: -50%;
+}
+
+.lines-button .lines:before {
+  top: 0.53333rem;
+}
+
+.lines-button .lines:after {
+  top: -0.53333rem;
+}
+
+.lines {
+  display: inline-block;
+  width: 1.6rem;
+  height: 2px;
+  background: black;
+  border-radius: 0.11429rem;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  position: relative;
+  top: -5px;
+  /*create the upper and lower lines as pseudo-elements of the middle line*/
+}
+
+.lines:before, .lines:after {
+  display: inline-block;
+  width: 1.6rem;
+  height: 2px;
+  background: black;
+  border-radius: 0.11429rem;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  position: absolute;
+  left: 0;
+  content: '';
+  -webkit-transform-origin: 0.11429rem center;
+          transform-origin: 0.11429rem center;
+}
+
+.lines:before {
+  top: 0.4rem;
+}
+
+.lines:after {
+  top: -0.4rem;
+}
+
+.lines-button.x.close .lines {
+  /*hide the middle line*/
+  background: transparent;
+  /*overlay the lines by setting both their top values to 0*/
+}
+
+.lines-button.x.close .lines:before, .lines-button.x.close .lines:after {
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+  top: 0;
+  width: 1.6rem;
+}
+
+.lines-button.x.close .lines:before {
+  -webkit-transform: rotate3d(0, 0, 1, 45deg);
+          transform: rotate3d(0, 0, 1, 45deg);
+}
+
+.lines-button.x.close .lines:after {
+  -webkit-transform: rotate3d(0, 0, 1, -45deg);
+          transform: rotate3d(0, 0, 1, -45deg);
+}
+
 header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -92,19 +175,33 @@ header {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  height: 80px;
+  height: 70px;
   z-index: 100;
   letter-spacing: 1px;
   text-align: center;
   padding: 15px;
 }
 
-header img {
+header .logo-text {
   background-color: white;
   border-radius: 20px;
   padding: 10px 15px;
   width: 100%;
-  max-width: 300px;
+  max-width: 275px;
+}
+
+header .logo-img {
+  display: none;
+  visibility: hidden;
+  background-color: white;
+  width: 60px;
+  padding: 7px;
+  border-radius: 50%;
+}
+
+header #menu-icon, header #menu-icon ~ label, header input[type=checkbox] {
+  display: none;
+  z-index: 5;
 }
 
 header ul {
@@ -137,7 +234,7 @@ header ul li a:hover {
 }
 
 .full-height {
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh - 70px);
 }
 
 .container {
@@ -154,11 +251,15 @@ header ul li a:hover {
 }
 
 .header-padding {
-  padding-top: 80px;
+  padding-top: calc(70px + 20px);
+}
+
+#landing {
+  padding-top: 70px;
 }
 
 #landing .landing-img, #landing .carousel-item {
-  max-height: calc(80vh - 80px);
+  max-height: calc(80vh - 70px);
   position: relative;
   z-index: 1;
 }
@@ -174,7 +275,7 @@ header ul li a:hover {
   position: relative;
   background-color: #F2B3D1;
   padding: 20px;
-  z-index: 1000;
+  z-index: 50;
 }
 
 footer {
@@ -184,11 +285,11 @@ footer {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 70px;
+  min-height: 70px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 40px;
+  padding: 20px;
 }
 
 footer * {
@@ -216,6 +317,16 @@ footer a:hover {
   border-bottom: 2px solid black;
 }
 
+footer .icons a:hover {
+  color: white;
+  border-bottom: 2px solid transparent;
+}
+
+footer .copyright {
+  text-align: end;
+  margin-left: auto;
+}
+
 .image-caption {
   position: relative;
 }
@@ -240,5 +351,75 @@ footer a:hover {
 
 .image-caption a:hover .caption {
   background-color: #f2b3d1;
+}
+
+@media screen and (max-width: 990px) {
+  header .logo-text {
+    display: none;
+    visibility: hidden;
+  }
+  header .logo-img {
+    display: block;
+    visibility: visible;
+  }
+  footer {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+  }
+  footer .copyright {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  header #menu-icon ~ label, header input[type=checkbox] {
+    display: block;
+  }
+  header #menu-icon:checked ~ .collapsible-menu {
+    height: 175px;
+  }
+  header #menu-icon:checked .lines {
+    /*hide the middle line*/
+    background: transparent;
+    /*overlay the lines by setting both their top values to 0*/
+  }
+  header #menu-icon:checked .lines:before, header #menu-icon:checked .lines:after {
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+    top: 0;
+    width: 1.6rem;
+  }
+  header #menu-icon:checked .lines:before {
+    -webkit-transform: rotate3d(0, 0, 1, 45deg);
+            transform: rotate3d(0, 0, 1, 45deg);
+  }
+  header #menu-icon:checked .lines:after {
+    -webkit-transform: rotate3d(0, 0, 1, -45deg);
+            transform: rotate3d(0, 0, 1, -45deg);
+  }
+  header .collapsible-menu {
+    display: block;
+    position: fixed;
+    background-color: #FCDD9A;
+    height: 0;
+    width: 100%;
+    top: 70px;
+    left: 0;
+    z-index: 10;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    overflow: hidden;
+  }
+  header .collapsible-menu ul {
+    display: block;
+  }
+  header .collapsible-menu ul li {
+    padding-top: 12px;
+  }
+  header ul {
+    height: 0;
+  }
 }
 /*# sourceMappingURL=styles.css.map */

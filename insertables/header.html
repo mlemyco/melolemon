@@ -4,25 +4,47 @@
 <header class="yellow-bg">
     <!-- <div class="row w-100">
         <div class="col-lg-4 logo">
-            <a href="/melolemon/"><img src="/melolemon/images/melologo text.png" alt="" class="logo-img"></a>
+            <a href="/"><img src="/images/melologo text.png" alt="" class="logo-img"></a>
         </div>
         <div class="col-lg-8">
             <ul>
-                <li><a href="/melolemon/">HOME</a></li>
-                <li><a href="/melolemon/characters/">CHARACTERS</a></li>
-                <li><a href="/melolemon/media/">MEDIA</a></li>
-                <li><a href="/melolemon/about-us/">ABOUT US</a></li>
+                <li><a href="/">HOME</a></li>
+                <li><a href="/characters/">CHARACTERS</a></li>
+                <li><a href="/media/">MEDIA</a></li>
+                <li><a href="/about-us/">ABOUT US</a></li>
             </ul>
         </div>
     </div> -->
     
     <div class="logo">
-        <a href="/melolemon/"><img src="/melolemon/images/melologo text.png" alt="" class="logo-img"></a>
+        <a href="/"><img src="/images/melologo text.png" alt="" class="logo-text"></a>
+        <a href="/"><img src="/images/melologo favicon.png" alt="" class="logo-img"></a>
     </div>
-    <ul>
-        <li><a href="/melolemon/" id="home-nav">HOME</a></li>
-        <li><a href="/melolemon/characters/" id="chara-nav">CHARACTERS</a></li>
-        <li><a href="/melolemon/media/" id="media-nav">MEDIA</a></li>
-        <li><a href="/melolemon/about-us/" id="about-nav">ABOUT US</a></li>
-    </ul>
+
+    <input type="checkbox" id="menu-icon">
+    <label for="menu-icon" class="lines-button x" >
+        <span class="lines"></span>
+    </label>
+
+    <div class="collapsible-menu">
+        <ul>
+            <li><a href="/" id="home-nav">HOME</a></li>
+            <li><a href="/characters/" id="chara-nav">CHARACTERS</a></li>
+            <li><a href="/media/" id="media-nav">MEDIA</a></li>
+            <li><a href="/about-us/" id="about-nav">ABOUT US</a></li>
+        </ul>
+    </div>
+
+    <script>
+        var menu_check = document.getElementById("menu-icon");
+        var lines = document.getElementsByClassName("lines-button x")[0];
+
+        menu_check.addEventListener('change', (event) => {
+            if (event.currentTarget.checked) {
+                lines.classList.add("close");
+            } else {
+                lines.classList.remove("close");
+            }
+        });
+    </script>
 </header>

@@ -4,6 +4,14 @@
 $pink: #F2B3D1;
 $yellow: #FCDD9A;
 $green: #CCE193;
+$header-height: 70px;
+
+@mixin center {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+}
 
 html, * {
     padding: 0;
@@ -76,24 +84,108 @@ img.green-underline {
     background-color: white;
 }
 
+$button-size : 1.6rem;
+$transition: .3s; // increase this to see the transformations in slow-motion
+
+.lines-button {
+    display: block;
+    transition: .3s;
+    cursor: pointer;
+    user-select: none;
+    margin-left: 0;
+    //padding-bottom: $button-size/2;
+
+    .lines {
+        margin-left: -50%;
+
+        &:before { top: $button-size/3; }
+        &:after { top: -$button-size/3; }
+    }
+}
+
+@mixin line {
+    display: inline-block;
+    width: $button-size;
+    height: 2px;
+    background: black;
+    border-radius: $button-size/14;
+    transition: $transition;
+}
+
+.lines {
+    //create middle line
+    @include line;
+    position: relative;
+    top: -5px;
+    // right: -15px;
+
+    /*create the upper and lower lines as pseudo-elements of the middle line*/
+    &:before, &:after {
+        @include line;
+        position: absolute;
+        left:0;
+        content: '';
+        transform-origin: $button-size/14 center;
+    }
+    &:before {
+        top: $button-size/4;
+    }
+    &:after {
+        top: -$button-size/4;
+    }
+}
+
+.lines-button.x.close .lines {
+    /*hide the middle line*/
+    background: transparent;
+
+    /*overlay the lines by setting both their top values to 0*/
+    &:before, &:after {
+        transform-origin: 50% 50%;
+        top: 0;
+        width: $button-size;
+    }
+
+    // rotate the lines to form the x shape
+    &:before{
+        transform: rotate3d(0,0,1,45deg);
+    }
+    &:after{
+        transform: rotate3d(0,0,1,-45deg);
+    }
+}
+
 header {
     display: flex;
     position: fixed;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 80px;
+    height: 70px;
     z-index: 100;
     letter-spacing: 1px;
     text-align: center;
     padding: 15px;
 
-    img {
+    .logo-text {
         background-color: white;
         border-radius: 20px;
         padding: 10px 15px;
         width: 100%;
-        max-width: 300px;
+        max-width: 275px;
+    }
+    .logo-img {
+        display: none;
+        visibility: hidden;
+        background-color: white;
+        width: 60px;
+        padding: 7px;
+        border-radius: 50%;
+    }
+
+    #menu-icon, #menu-icon ~ label, input[type=checkbox] {
+        display: none;
+        z-index: 5;
     }
 
     ul {
@@ -124,7 +216,7 @@ header {
 }
 
 .full-height {
-    min-height: calc(100vh - 80px);
+    min-height: calc(100vh - #{$header-height});
 }
 .container {
     padding: 25px;
@@ -134,14 +226,15 @@ header {
 }
 
 .header-padding {
-    padding-top: 80px;
+    padding-top: calc(#{$header-height} + 20px);
 }
 
 #landing {
     // min-height: 100vh;
+    padding-top: $header-height; // for header
 
     .landing-img, .carousel-item {
-        max-height: calc(80vh - 80px);
+        max-height: calc(80vh - #{$header-height});
         position: relative;
         z-index: 1;
         // background-image: url("/images/melolemon\ landing.png");
@@ -161,16 +254,16 @@ header {
         position: relative;
         background-color: $pink;
         padding: 20px;
-        z-index: 1000;
+        z-index: 50;
     }
 }
 
 footer {
     display: flex;
     justify-content: center;
-    height: 70px;
+    min-height: 70px;
     align-items: center;
-    padding: 40px;
+    padding: 20px;
 
     * {
         padding: 0;
@@ -195,6 +288,17 @@ footer {
             border-bottom: 2px solid black;
         }
     }
+
+    .icons a:hover {
+        color: white;
+        border-bottom: 2px solid transparent;
+    }
+
+    .copyright {
+        // display: block;
+        text-align: end;
+        margin-left: auto;
+    }
 }
 
 .image-caption {
@@ -218,6 +322,89 @@ footer {
 
         &:hover .caption {
             background-color: rgba($color: $pink, $alpha: 1.0);
+        }
+    }
+}
+
+@media screen and (max-width: 990px) {
+    header {
+        .logo-text {
+            display: none;
+            visibility: hidden;
+        }
+        .logo-img {
+            display: block;
+            visibility: visible;
+        }
+    }
+
+    footer {
+        @include center;
+
+        .copyright {
+            text-align: center;
+        }
+    }
+}
+
+@media screen and (max-width: 650px) {
+    header {
+        #menu-icon ~ label, input[type=checkbox] {
+            display: block;
+        }
+
+        $button-size : 1.6rem;
+        $transition: .3s; // increase this to see the transformations in slow-motion
+
+        #menu-icon:checked {
+            ~ .collapsible-menu {
+                height: 175px;
+            }
+
+            .lines {
+                /*hide the middle line*/
+                background: transparent;
+            
+                /*overlay the lines by setting both their top values to 0*/
+                &:before, &:after {
+                    transform-origin: 50% 50%;
+                    top: 0;
+                    width: $button-size;
+                }
+            
+                // rotate the lines to form the x shape
+                &:before{
+                    transform: rotate3d(0,0,1,45deg);
+                }
+                &:after{
+                    transform: rotate3d(0,0,1,-45deg);
+                }
+            }
+        }
+
+        .collapsible-menu {
+            display: block;
+            position: fixed;
+            background-color: $yellow;
+            height: 0;
+            width: 100%;
+            top: $header-height; //height of navbar
+            left: 0;
+            z-index: 10;
+            transition: 0.3s;
+            overflow: hidden;
+
+            ul {
+                display: block;
+                
+                li {
+                    padding-top: 12px;
+                }
+            }
+        }
+
+        ul {
+            height: 0;
         }
     }
 }
