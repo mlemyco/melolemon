@@ -234,7 +234,7 @@ header ul li a:hover {
 }
 
 .full-height {
-  min-height: calc(100vh - 70px);
+  min-height: calc(100vh - 70px - 12px);
 }
 
 .container {
@@ -251,7 +251,7 @@ header ul li a:hover {
 }
 
 .header-padding {
-  padding-top: calc(70px + 20px);
+  padding-top: calc(70px + 30px);
 }
 
 #landing {

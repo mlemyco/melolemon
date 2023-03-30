@@ -5,6 +5,7 @@ $pink: #F2B3D1;
 $yellow: #FCDD9A;
 $green: #CCE193;
 $header-height: 70px;
+$footer-height: 70px;
 
 @mixin center {
     display: block;
@@ -161,7 +162,7 @@ header {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 70px;
+    height: $header-height;
     z-index: 100;
     letter-spacing: 1px;
     text-align: center;
@@ -216,8 +217,9 @@ header {
 }
 
 .full-height {
-    min-height: calc(100vh - #{$header-height});
+    min-height: calc(100vh - #{$footer-height} - 12px); // -12px because it's off for some reason......
 }
+
 .container {
     padding: 25px;
     display: flex;
@@ -226,7 +228,7 @@ header {
 }
 
 .header-padding {
-    padding-top: calc(#{$header-height} + 20px);
+    padding-top: calc(#{$header-height} + 30px);
 }
 
 #landing {
@@ -261,7 +263,7 @@ header {
 footer {
     display: flex;
     justify-content: center;
-    min-height: 70px;
+    min-height: $footer-height;
     align-items: center;
     padding: 20px;
 
