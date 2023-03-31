@@ -340,6 +340,10 @@ footer {
         }
     }
 
+    .full-height {
+        padding-top: calc(#{$header-height} + 30px);
+    }
+
     footer {
         @include center;
 

@@ -362,6 +362,9 @@ footer .copyright {
     display: block;
     visibility: visible;
   }
+  .full-height {
+    padding-top: calc(70px + 30px);
+  }
   footer {
     display: block;
     margin-right: auto;
