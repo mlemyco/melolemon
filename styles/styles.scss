@@ -234,6 +234,7 @@ header {
 #landing {
     // min-height: 100vh;
     padding-top: $header-height; // for header
+    background-color: black;
 
     .landing-img, .carousel-item {
         max-height: calc(80vh - #{$header-height});
